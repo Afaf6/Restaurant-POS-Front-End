@@ -1,4 +1,10 @@
 
+.dashboard {
+  padding: 24px;
+  padding-top: 100px; 
+  min-height: 100vh; 
+
+}
 .dashSec {
   display: flex;
   gap: 24px; 

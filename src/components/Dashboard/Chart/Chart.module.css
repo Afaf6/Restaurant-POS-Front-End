@@ -6,14 +6,3 @@
     width: 100%;
 }
 
-.chart button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    color: #000000;
-}
-.chart button:hover {
-    background-color: #a1c5e2;
-    border-radius: 0.5cap;
-}

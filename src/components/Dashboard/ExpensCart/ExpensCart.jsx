@@ -1,12 +1,50 @@
 import style from "./ExpensCart.module.css";
 
-function ExponsCart() {
+function ExponsCart({ summary }) {
 
-    const links = [
-        { icon: "fa-money-bill", title: "Total Revenue", money: "$124,592", rate: "fa-arrow-up", precen: "12.5%", diff: "vs.  last month", diffMoney: "$110,748", type: "revenue" },
-        { icon: "fa-receipt", title: "Total Expenses", money: "$82,340", rate: "fa-arrow-down", precen: "4.2%", diff: "vs.  last month", diffMoney: "$79,021", type: "expenses" },
-        { icon: "fa-arrow-trend-up", title: "Net Profit", money: "$42,252", rate: "fa-arrow-up", precen: "28.1%", diff: "vs.  last month", diffMoney: "$32,980", type: "profit" },
-    ]
+    //  const data = {
+    //     revenue: summary?.revenue ?? "0.00",
+    //     expenses: summary?.expenses ?? "0.00",
+    //     profit: summary?.profit ?? "0.00",
+    //     revenueChange: summary?.revenueChange ?? 0,
+    //     lastMonthRevenue: summary?.lastMonthRevenue ?? "0.00",
+    // };
+
+    const links = summary ? [
+        { icon: "fa-money-bill", 
+          title: "Total Revenue",
+          money: `$${summary.revenue}`,
+          rate: summary.revenueChange >= 0 ? "fa-arrow-up" : "fa-arrow-down", 
+          precen: `${Math.abs(summary.revenueChange)}%`,
+          diff: "vs.  last month", 
+          diffMoney: `$${summary.lastMonthRevenue}`, 
+          type: "revenue" },
+
+        { icon: "fa-receipt", 
+          title: "Total Expenses", 
+          money: `$${summary.expenses}`, 
+          rate: summary.revenueChange >= 0 ? "fa-arrow-up" : "fa-arrow-down", 
+          precen: `${Math.abs(summary.revenueChange)}%`, 
+          diff: "vs.  last month", 
+          diffMoney: `$${summary.lastMonthRevenue}`,
+          type: "expenses" },
+
+        { icon: "fa-arrow-trend-up",
+          title: "Net Profit",
+          money: `$${summary.profit}`,
+          rate: summary.revenueChange >= 0 ? "fa-arrow-up" : "fa-arrow-down",
+          precen: `${Math.abs(summary.revenueChange)}%`,
+          diff: "vs.  last month",
+          diffMoney: `$${summary.lastMonthRevenue}`,
+          type: "profit" },
+        ] : [];
+
+    //   const links = [
+    //     { icon: "fa-money-bill", title: "Total Revenue", money: "$124,592", rate: "fa-arrow-up", precen: "12.5%", diff: "vs.  last month", diffMoney: "$110,748", type: "revenue" },
+    //     { icon: "fa-receipt", title: "Total Expenses", money: "$82,340", rate: "fa-arrow-down", precen: "4.2%", diff: "vs.  last month", diffMoney: "$79,021", type: "expenses" },
+    //     { icon: "fa-arrow-trend-up", title: "Net Profit", money: "$42,252", rate: "fa-arrow-up", precen: "28.1%", diff: "vs.  last month", diffMoney: "$32,980", type: "profit" },
+    // ]
+    
     return (
         <div className={`${style.expCartSec} container`}>
             <div className="row gy-3">
@@ -48,4 +86,3 @@ function ExponsCart() {
 
 export default ExponsCart;
 
-// d-flex flex-wrap container justify-content-between align-items-center gap-3 p-3
