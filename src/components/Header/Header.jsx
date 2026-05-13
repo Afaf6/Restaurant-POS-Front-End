@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 
- function Header() {
+ function Header({adminName = "UserName"}) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -10,8 +10,16 @@ import styles from "./Header.module.css";
     <header className={styles.header}>
       <button className={styles.hamburger} onClick={() => setIsOpen(!isOpen)}>☰</button>
       <span className={styles.brand}> FreshBite POS</span>
-      <div className={styles.avatar}>U</div>
+      
+        <div className="d-flex align-items-center gap-2">
+          <span>{adminName}</span>
+          <div className={styles.avatar}>
+            {adminName ? adminName.charAt(0).toUpperCase() : "U"}
+          </div>
+        </div>
+
     </header>
+
 
 
      <div className={`${styles.sidebar} ${isOpen ? styles.open : ""}`}>

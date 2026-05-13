@@ -7,8 +7,10 @@ import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 
 export default function App() {
+  const [count, setCount] = useState(0)
   const [activeTab, setActiveTab] = useState("POS");
-
+  const userDisplayName = localStorage.getItem("userName") || "Guest";
+  
   return (
     <BrowserRouter>
       <Routes>
@@ -18,7 +20,7 @@ export default function App() {
        
         <Route path="/*" element={
           <>
-            <Header />
+            <Header adminName={userDisplayName} />
             <Pos activeTab={activeTab} />
             <BottomNavbar active={activeTab} onChange={setActiveTab} />
           </>
